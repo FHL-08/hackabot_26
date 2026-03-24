@@ -10,6 +10,7 @@ The ice9 swarm challenge.
 - `src/data/` contains checked-in baseline calibration assets.
 - `src/generated/` contains generated outputs and is ignored by git.
 - `firmware/execute_server_commands/execute_server_commands.ino` contains the MONA robot firmware used with this Python control stack.
+- `firmware/standalone_wheel_speed_control/standalone_wheel_speed_control.ino` is a no-Wi-Fi motor-control example where you set wheel-speed targets directly.
 
 ## Network configuration (important)
 
@@ -74,6 +75,22 @@ Before flashing `firmware/execute_server_commands/execute_server_commands.ino`, 
 	- Click `Upload`
 
 If library includes fail during compile, verify `ESP32WebServer` is installed in Arduino IDE via the ZIP library flow above.
+
+## Standalone motor control firmware (no Wi-Fi)
+
+If you want a simple motor-control-only example (without TCP/Wi-Fi), flash:
+
+- `firmware/standalone_wheel_speed_control/standalone_wheel_speed_control.ino`
+
+This sketch keeps the wheel-speed controller but removes networking. It exposes:
+
+- `setDesiredWheelSpeeds(left_rad_s, right_rad_s)`
+
+You can test from Serial Monitor at `115200` baud with:
+
+- `set 8 8`
+- `set 8 -8`
+- `stop`
 
 ## Runtime command (auto from tracker)
 
